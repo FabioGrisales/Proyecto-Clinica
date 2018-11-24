@@ -72,7 +72,6 @@
                             if (request.getParameter("txtNombre").compareTo("") == 0 || 
                             request.getParameter("txtApellido").compareTo("") == 0 || 
                             request.getParameter("txtCedula").compareTo("") == 0 || 
-                             
                             request.getParameter("txtTelefono").compareTo("") == 0 ||
                             request.getParameter("txtNombreUsuario").compareTo("") == 0 || 
                             request.getParameter("txtContrasenia").compareTo("") == 0||
@@ -80,8 +79,9 @@
                             
                        
                         } else {
+                                
                             out.println("Registrado Administrador <br>");
-                            ca.guardarJson();
+                            ca.aggUsuario(usuario);
 
                         }
                     }

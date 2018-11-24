@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * @author FHGA
  */
 public class Clinica {
-    ArrayList<Usuario>usuario=new ArrayList<>();
-    ArrayList<Paciente>paciente=new ArrayList<>();
+    ArrayList<Usuario>usuarios=new ArrayList<>();
+    ArrayList<Paciente>pacientes=new ArrayList<>();
     
 
 }

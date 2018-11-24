@@ -30,14 +30,19 @@ public class ClinicaAdministrativa {
 
     public void aggPaciente(Paciente p) throws IOException {
         leerJson();
-        clinica.paciente.add(p);
+        clinica.pacientes.add(p);
+        guardarJson();
+    }
+    public void aggUsuario(Usuario u) throws IOException {
+        leerJson();
+        clinica.usuarios.add(u);
         guardarJson();
     }
 
-    public void leerJson() throws IOException {
+    public void guardarJson() throws IOException {
         String ruta = "C:\\Users\\HP\\Documents\\NetBeansProjects\\universidad\\ProyectoClinica\\aaa.json";
         BufferedWriter bw;
-        clinica = new Clinica();
+        
         String jsonString = gson.toJson(clinica);
         File archivo = new File(ruta);
         bw = new BufferedWriter(new FileWriter(archivo));
@@ -45,13 +50,12 @@ public class ClinicaAdministrativa {
         bw.close();
     }
 
-    public void guardarJson() throws IOException {
+    public void leerJson() throws IOException {
         String ruta;
         ruta = "C:\\Users\\HP\\Documents\\NetBeansProjects\\universidad\\ProyectoClinica\\aaa.json";
         String cadena;
-        File fl=new File(ruta);
         FileReader f = new FileReader(ruta);
-        
+        System.out.println("Hola Mundo");
         String leer;
         try (BufferedReader br = new BufferedReader(f)) {
             leer = "";
@@ -60,7 +64,13 @@ public class ClinicaAdministrativa {
                 leer = leer + cadena;
             }   System.out.println(leer);
         }
-        clinica = gson.fromJson(leer, Clinica.class);
+        
+        if(leer.length()>0){
+              clinica = gson.fromJson(leer, Clinica.class);
+        }else{
+            clinica=new Clinica();
+        }
+       
 
     } 
 
@@ -68,7 +78,7 @@ public class ClinicaAdministrativa {
         if (u.getNombreUsuario().compareTo("Admin") == 0 && u.getContrasena().compareTo("123456789") == 0) {
                 return u.getNombreUsuario();
         } else {
-            for (Usuario item : clinica.usuario) {
+            for (Usuario item : clinica.usuarios) {
                 if (item.getNombre().compareTo(u.getNombre()) == 0 && (item.getCargo().compareTo(u.getCargo())) == 0) {
                     return item.getCargo();
                 }else{
