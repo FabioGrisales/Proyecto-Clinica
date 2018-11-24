@@ -67,19 +67,27 @@
                     if (request.getParameter("btnAceptar") != null) {
                     clinica.modelo.ClinicaAdministrativa ca = new ClinicaAdministrativa();
                     clinica.modelo.Usuario usuario = new Usuario();
-                    usuario.setApellido(request.getParameter("txtApellido"));
+                    usuario.setNombre(request.getParameter("txtNombre"));
+                   usuario.setApellido(request.getParameter("txtApellido"));
+                   usuario.setCargo(request.getParameter("RaCargo"));
+                   usuario.setCedula(request.getParameter("txtCedula"));
+                   usuario.setNombreUsuario(request.getParameter("txtNombreUsuario"));
+                   usuario.setContrasena(request.getParameter("txtContrasenia"));
+                   usuario.setTelefono(request.getParameter("txtTelefono"));
+                  
                    
-                            if (request.getParameter("txtNombre").compareTo("") == 0 || 
-                            request.getParameter("txtApellido").compareTo("") == 0 || 
-                            request.getParameter("txtCedula").compareTo("") == 0 || 
-                            request.getParameter("txtTelefono").compareTo("") == 0 ||
-                            request.getParameter("txtNombreUsuario").compareTo("") == 0 || 
-                            request.getParameter("txtContrasenia").compareTo("") == 0||
+                            if (usuario.getNombre().compareTo("") == 0 || 
+                            usuario.getApellido().compareTo("") == 0 || 
+                            usuario.getCedula().compareTo("") == 0 || 
+                            usuario.getTelefono().compareTo("") == 0 ||
+                            usuario.getNombreUsuario().compareTo("") == 0 || 
+                            usuario.getContrasena().compareTo("") == 0||
+                            usuario.getCargo().compareTo("")==0||
                             request.getParameter("txtConfirContrasenia").compareTo("") == 0){
                             
                        
                         } else {
-                                
+                            
                             out.println("Registrado Administrador <br>");
                             ca.aggUsuario(usuario);
 
