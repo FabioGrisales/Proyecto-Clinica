@@ -40,6 +40,23 @@
         </nav>
         <div class="container">
             <h1>Administración de Usuario</h1>
+            <%
+                String eliminarDoc = "";
+                if (request.getParameter("btnEliminar") != null) {
+                    eliminarDoc = request.getParameter("txtCedula");
+                    clinica.modelo.ClinicaAdministrativa cad = new ClinicaAdministrativa();
+                    cad.eliminarUsuarios(eliminarDoc);
+
+            %>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="alert alert-success" role="alert">
+                        Se ha Eliminado El Usuario Con Documento: <%= eliminarDoc%>  
+                    </div>
+                </div>
+            </div>
+            <%}
+            %>
             <div class="row">
                 <div class="col-xs-12" >
                     <form class="form-inline">
@@ -68,7 +85,8 @@
                         clinica.modelo.ClinicaAdministrativa ca = new ClinicaAdministrativa();
                         ArrayList<Usuario> usuarios = ca.obtenerUsuarios(documento);
 
-                        if (usuarios != null) {
+                        if (usuarios != null && usuarios.size() > 0) {
+
                     %>
                     <table class="table" style="margin-top: 30px">
                         <thead>
@@ -78,17 +96,21 @@
                                 <th scope="col">Apellido</th>
                                 <th scope="col">Identificación</th>
                                 <th scope="col">Cargo</th>
+                                <th scope="col">Acción</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <%
-                                for (Usuario u : usuarios) {
+                            <%                                for (Usuario u : usuarios) {
                             %>
                             <tr>
                                 <td><%= u.getNombre()%></td>
                                 <td><%= u.getApellido()%></td>
                                 <td><%= u.getCedula()%></td>
                                 <td><%= u.getCargo()%></td>
+                                <td><form>
+                                        <input type="hidden" name="txtCedula" value="<%= u.getCedula()%>" />
+                                        <button type="submit" class="btn btn-danger btn-sm" name="btnEliminar">Eliminar</button>
+                                    </form> </td>
                             </tr>  
                             <%
                                 }
@@ -96,16 +118,21 @@
                         </tbody>
                     </table>
                     <%
-                    } else {
-                    %><div class="alert alert-warning" role="alert">
+                    } else if (usuarios == null) {
+
+                    %>
+                    <div class="alert alert-warning" role="alert">
                         Usuario No Encontrado
-                    </div><%
+                    </div>
+                    <%} else {
+                    %>
+                    <div class="alert alert-warning" role="alert">
+                        No Hay Usuarios Registrados
+                    </div>
+                    <%
                         }
 
                     %>
-
-
-
                 </div>
             </div>
         </div>
