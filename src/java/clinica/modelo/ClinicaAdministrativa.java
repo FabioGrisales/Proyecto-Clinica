@@ -127,6 +127,16 @@ public class ClinicaAdministrativa {
         return null;
 
     }
+        public void eliminarPacientes(String documento) throws IOException {
+        leerJson();
+        for (Paciente p : clinica.pacientes) {
+            if (p.getIdentificacion().compareTo(documento) == 0) {
+               clinica.pacientes.remove(p);
+               break;
+            }
+        }
+        guardarJson();
+    }
 
     public void eliminarUsuarios(String documento) throws IOException {
         leerJson();
