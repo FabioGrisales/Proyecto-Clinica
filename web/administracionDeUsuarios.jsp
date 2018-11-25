@@ -4,6 +4,9 @@
     Author     : FHGA
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="clinica.modelo.Usuario"%>
+<%@page import="clinica.modelo.ClinicaAdministrativa"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -57,7 +60,7 @@
                     <table class="table" style="margin-top: 30px">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellido</th>
                                 <th scope="col">Identificación</th>
@@ -65,14 +68,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <%
+                                clinica.modelo.ClinicaAdministrativa ca = new ClinicaAdministrativa();
+                                ArrayList<Usuario> usuarios = ca.obtenerUsuarios();
+                                for (Usuario u : usuarios) {
+                            %>
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Otto</td>
-                            </tr>
-                            
+                                <td><%= u.getNombre()%></td>
+                                <td><%= u.getApellido()%></td>
+                                <td><%= u.getCedula()%></td>
+                                <td><%= u.getCargo()%></td>
+                            </tr>  
+                            <%
+                                }
+                            %>
+
+
                         </tbody>
                     </table>
                 </div>

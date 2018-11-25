@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.Buffer;
+import java.util.ArrayList;
 
 /**
  *
@@ -91,6 +92,10 @@ public class ClinicaAdministrativa {
         return null;
     }
     
-    
+    public ArrayList<Usuario> obtenerUsuarios() throws IOException{
+        leerJson();
+        return clinica.usuarios;
+        
+    }
 
 }
