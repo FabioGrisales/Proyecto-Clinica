@@ -92,9 +92,20 @@ public class ClinicaAdministrativa {
         return null;
     }
     
-    public ArrayList<Usuario> obtenerUsuarios() throws IOException{
+    public ArrayList<Usuario> obtenerUsuarios(String documento) throws IOException{
         leerJson();
+        if(documento.length()==0){
         return clinica.usuarios;
+        }else{
+            for(Usuario u:clinica.usuarios){
+                if(u.getCedula().compareTo(documento)==0){
+                    ArrayList<Usuario>buscarUsuario=new ArrayList<>();
+                    buscarUsuario.add(u);
+                  return buscarUsuario;
+                }
+            }
+        }
+        return null;
         
     }
 

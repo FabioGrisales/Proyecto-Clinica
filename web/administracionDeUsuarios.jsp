@@ -45,13 +45,13 @@
                     <form class="form-inline">
                         <div class="form-group mb-3">
                             <label for="Buscar" class="sr-only">Buscar</label>
-                            <input type="text" readonly class="form-control-plaintext" id="Buscar" value="Buscar Usuario">
+                            <input type="text" readonly class="form-control-plaintext" id="Buscar" >
                         </div>
                         <div class="form-group mx-sm-3 mb-2">
                             <label for="inputIdentificacion" class="sr-only">Password</label>
-                            <input type="tex" class="form-control" id="inputIdentificacion" placeholder="Identificacion">
+                            <input type="tex" class="form-control" id="inputIdentificacion" placeholder="Identificacion"  name="txtBuscar">
                         </div>
-                        <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+                        <button type="submit" class="btn btn-primary mb-2" name="btnBuscar">Buscar</button>
                     </form>
                 </div>
             </div>
@@ -69,9 +69,17 @@
                         </thead>
                         <tbody>
                             <%
+                                String documento = "";
+
+                                if (request.getParameter("btnBuscar") != null) {
+                                    documento = request.getParameter("txtBuscar");
+                                }
+
                                 clinica.modelo.ClinicaAdministrativa ca = new ClinicaAdministrativa();
-                                ArrayList<Usuario> usuarios = ca.obtenerUsuarios();
-                                for (Usuario u : usuarios) {
+                                ArrayList<Usuario> usuarios = ca.obtenerUsuarios(documento);
+
+                                if (usuarios != null) {
+                                    for (Usuario u : usuarios) {
                             %>
                             <tr>
                                 <td><%= u.getNombre()%></td>
@@ -80,7 +88,11 @@
                                 <td><%= u.getCargo()%></td>
                             </tr>  
                             <%
-                                }
+                                        }
+                                    } else {
+                                        out.println("Usuario No Encontrado");
+                                    }
+                                
                             %>
 
 
