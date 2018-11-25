@@ -5,7 +5,8 @@
  */
 package clinica.modelo;
 
-import java.util.Date;
+import java.util.ArrayList;
+
 
 /**
  *
@@ -16,9 +17,20 @@ public class Paciente {
     String apellido;
     String identificacion;
     String telefono;
-    String sintomas;
-    String formulacion;
-    Date fecha;
+ 
+    ArrayList<Atencion>atenciones=new ArrayList<>();
+ 
+
+    public Paciente() {
+        this.nombre = "";
+        this.apellido = "";
+        this.identificacion = "";
+        this.telefono = "";
+      
+       
+    }
+    
+   
 
     public String getNombre() {
         return nombre;
@@ -68,13 +80,7 @@ public class Paciente {
         this.formulacion = formulacion;
     }
 
-    public Date getFecha() {
-        return fecha;
-    }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
     
     
     

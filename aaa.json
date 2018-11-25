@@ -1,1 +1,1 @@
-{"usuarios":[],"pacientes":[{"nombre":"Fabio","apellido":"Grisales","identificacion":"99032610389","telefono":"43433601"},{"nombre":"Heriberto","apellido":"Arias","identificacion":"1083043782","telefono":"3043313120"}]}
+{"usuarios":[],"pacientes":[{"nombre":"Fabio","apellido":"Grisales","identificacion":"99032610389","telefono":"43433601","sintomas":"","formulacion":""},{"nombre":"Heriberto","apellido":"Arias","identificacion":"1083043782","telefono":"3043313120","sintomas":"","formulacion":""}]}
