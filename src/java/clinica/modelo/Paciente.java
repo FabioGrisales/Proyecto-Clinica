@@ -64,21 +64,7 @@ public class Paciente {
         this.telefono = telefono;
     }
 
-    public String getSintomas() {
-        return sintomas;
-    }
-
-    public void setSintomas(String sintomas) {
-        this.sintomas = sintomas;
-    }
-
-    public String getFormulacion() {
-        return formulacion;
-    }
-
-    public void setFormulacion(String formulacion) {
-        this.formulacion = formulacion;
-    }
+   
 
 
     
