@@ -57,6 +57,19 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
+
+                    <%
+                        String documento = "";
+
+                        if (request.getParameter("btnBuscar") != null) {
+                            documento = request.getParameter("txtBuscar");
+                        }
+
+                        clinica.modelo.ClinicaAdministrativa ca = new ClinicaAdministrativa();
+                        ArrayList<Usuario> usuarios = ca.obtenerUsuarios(documento);
+
+                        if (usuarios != null) {
+                    %>
                     <table class="table" style="margin-top: 30px">
                         <thead>
                             <tr>
@@ -69,17 +82,7 @@
                         </thead>
                         <tbody>
                             <%
-                                String documento = "";
-
-                                if (request.getParameter("btnBuscar") != null) {
-                                    documento = request.getParameter("txtBuscar");
-                                }
-
-                                clinica.modelo.ClinicaAdministrativa ca = new ClinicaAdministrativa();
-                                ArrayList<Usuario> usuarios = ca.obtenerUsuarios(documento);
-
-                                if (usuarios != null) {
-                                    for (Usuario u : usuarios) {
+                                for (Usuario u : usuarios) {
                             %>
                             <tr>
                                 <td><%= u.getNombre()%></td>
@@ -88,16 +91,21 @@
                                 <td><%= u.getCargo()%></td>
                             </tr>  
                             <%
-                                        }
-                                    } else {
-                                        out.println("Usuario No Encontrado");
-                                    }
-                                
+                                }
                             %>
-
-
                         </tbody>
                     </table>
+                    <%
+                    } else {
+                    %><div class="alert alert-warning" role="alert">
+                        Usuario No Encontrado
+                    </div><%
+                        }
+
+                    %>
+
+
+
                 </div>
             </div>
         </div>
