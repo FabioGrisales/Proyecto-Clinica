@@ -133,7 +133,7 @@ public class ClinicaAdministrativa {
             if (p.getIdentificacion().compareTo(documento) == 0) {
                clinica.pacientes.remove(p);
                break;
-            }
+            } 
         }
         guardarJson();
     }
@@ -146,6 +146,13 @@ public class ClinicaAdministrativa {
                break;
             }
         }
+        guardarJson();
+    }
+    
+    public void editarPacientes(Paciente p) throws IOException{
+        leerJson();
+        eliminarPacientes(p.getIdentificacion());
+        aggPaciente(p);
         guardarJson();
     }
 

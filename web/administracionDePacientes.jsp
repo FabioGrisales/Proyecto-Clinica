@@ -109,10 +109,9 @@
                                 <td><%= p.getApellido()%></td>
                                 <td><%= p.getIdentificacion()%></td>
                                 <td>
-                                    <form>
-                                        <input type="hidden" name="txtCedula" value="<%= p.getIdentificacion()%>" />
-                                        <button type="submit" class="btn btn-primary btn-sm" name="btnEditar">Ediar</button>
-                                    </form>
+                                    
+                                    <a href="registroDePacientes.jsp?cedula=<%= p.getIdentificacion() %>">Editar</a>
+                                    
                                 </td>
                                 <td>
                                     <form>

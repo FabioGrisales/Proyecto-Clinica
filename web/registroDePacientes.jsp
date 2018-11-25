@@ -41,6 +41,21 @@
             </div>
         </nav>  
         <div class="container">
+            <% String accion="";
+            clinica.modelo.Paciente p = new Paciente();
+            String cedula=request.getParameter("cedula");
+            if(cedula==null){
+                accion="agregar";
+            }else{
+                accion="editar";
+                clinica.modelo.ClinicaAdministrativa caed= new ClinicaAdministrativa();
+                p=caed.obtenerPacientes(cedula).get(0);
+                
+            }
+            
+            
+            
+            %>
             <h1>Complete El Registro!</h1>
             <%
                 if (request.getParameter("btnAceptar") != null) {
@@ -56,8 +71,12 @@
                             || paciente.getIdentificacion().compareTo("") == 0
                             || paciente.getTelefono().compareTo("") == 0) {
 
-                    } else {
+                    } else  {
+                        if(request.getParameter("txtAccion")=="agregar"){
                         ca.aggPaciente(paciente);
+                        }else{
+                            ca.editarPacientes(paciente);
+                        }
             %>
             <div class="row">
                 <div class="col-xs-12">
@@ -75,22 +94,22 @@
                     <form>
                         <div class="form-group" >
                             <label for="inputNombre">Nombre</label>
-                            <input type="text" name="txtNombre" class="form-control" id="inputNombre" placeholder="Nombre" required autofocus>
+                            <input type="text" name="txtNombre" class="form-control" id="inputNombre" placeholder="Nombre" value="<%= p.getNombre() %>" required autofocus>
                         </div>
 
                         <div class="form-group">
                             <label for="inputApellido">Apellido</label>
-                            <input type="text" name="txtApellido" class="form-control" id="inputApellido" placeholder="Apellido" required>
+                            <input type="text" name="txtApellido" class="form-control" id="inputApellido" placeholder="Apellido" value="<%= p.getApellido()%>" required>
                         </div>
 
                         <div class="form-group">
                             <label for="inputIdentificacion">Identificacion</label>
-                            <input type="text" name="txtCedula" class="form-control" id="inputIdentificacion" placeholder="Identificacion" required>
+                            <input type="text" name="txtCedula" class="form-control" id="inputIdentificacion" placeholder="Identificacion" value="<%= p.getIdentificacion() %>" required>
                         </div>
 
                         <div class="form-group">
                             <label for="inputTelefono">Telefono</label>
-                            <input type="text" name="txtTelefono" class="form-control" id="inputTelefono" placeholder="Telefono" required>
+                            <input type="text" name="txtTelefono" class="form-control" id="inputTelefono" placeholder="Telefono" value="<%= p.getTelefono() %>" required>
                         </div>
 
 
@@ -100,7 +119,8 @@
                             </button>
                         </div>
                         </table>
-
+                        
+                        <input type="hidden" name="txtAccion" value="<%= accion %>"
                     </form>
                 </div>
             </div>
