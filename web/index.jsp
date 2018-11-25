@@ -45,12 +45,12 @@
                 } else if (request.getParameter("txtUsuario").compareTo(cargo) == 0) {
                     out.println("Sesion iniciada<br>");
                     session.setAttribute("txtUsuario", request.getParameter("txtUsuario").toString());//para iniciar secion creada
-                    response.sendRedirect("registroDeAdministrador.jsp");  //direcionar despues del boton aceptar a otra pagina como dejar la pagina en blaco
+                    response.sendRedirect("menuAdministrativo.jsp");  //direcionar despues del boton aceptar a otra pagina como dejar la pagina en blaco
 
-                } else if (cargo.compareTo("Doctor") == 0) {
+                } else if (cargo.compareTo("Administrador") == 0) {
                     out.println("Sesion iniciada<br>");
                     session.setAttribute("txtUsuario", request.getParameter("txtUsuario").toString());//para iniciar secion creada
-                    response.sendRedirect("atencion.jsp");  //direcionar despues del boton aceptar a otra pagina como dejar la pagina en blaco
+                    response.sendRedirect("administracionDeUsuarios.jsp");  //direcionar despues del boton aceptar a otra pagina como dejar la pagina en blaco
                 } else if (cargo.compareTo("Enfermero") == 0) {
                     out.println("Sesion iniciada<br>");
                     session.setAttribute("txtUsuario", request.getParameter("txtUsuario").toString());//para iniciar secion creada

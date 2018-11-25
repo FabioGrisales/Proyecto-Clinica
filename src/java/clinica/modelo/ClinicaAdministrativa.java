@@ -33,6 +33,7 @@ public class ClinicaAdministrativa {
         clinica.pacientes.add(p);
         guardarJson();
     }
+
     public void aggUsuario(Usuario u) throws IOException {
         leerJson();
         clinica.usuarios.add(u);
@@ -42,7 +43,7 @@ public class ClinicaAdministrativa {
     public void guardarJson() throws IOException {
         String ruta = "C:\\Users\\HP\\Documents\\NetBeansProjects\\universidad\\ProyectoClinica\\aaa.json";
         BufferedWriter bw;
-        
+
         String jsonString = gson.toJson(clinica);
         File archivo = new File(ruta);
         bw = new BufferedWriter(new FileWriter(archivo));
@@ -60,35 +61,36 @@ public class ClinicaAdministrativa {
         try (BufferedReader br = new BufferedReader(f)) {
             leer = "";
             while ((cadena = br.readLine()) != null) {
-                
+
                 leer = leer + cadena;
-            }   System.out.println(leer);
-        }
-        
-        if(leer.length()>0){
-              clinica = gson.fromJson(leer, Clinica.class);
-        }else{
-            clinica=new Clinica();
-        }
-       
-
-    } 
-
-    public String validarLogin(Usuario u) {
-        if (u.getNombreUsuario().compareTo("Admin") == 0 && u.getContrasena().compareTo("123456789") == 0) {
-                return u.getNombreUsuario();
-        } else {
-            for (Usuario item : clinica.usuarios) {
-                if (item.getNombre().compareTo(u.getNombre()) == 0 && (item.getCargo().compareTo(u.getCargo())) == 0) {
-                    return item.getCargo();
-                }else{
-                    System.out.println("Datos Incorrecto");
-                }
-
             }
+            System.out.println(leer);
         }
-        return null;
+
+        if (leer.length() > 0) {
+            clinica = gson.fromJson(leer, Clinica.class);
+        } else {
+            clinica = new Clinica();
+        }
 
     }
+
+    public String validarLogin(Usuario u) throws IOException {
+        if (u.getNombreUsuario().compareTo("Admin") == 0 && u.getContrasena().compareTo("123456789") == 0) {
+            return u.getNombreUsuario();
+        } else {
+            leerJson();
+            for (Usuario item : clinica.usuarios) {
+                if (item.getNombreUsuario().compareTo(u.getNombreUsuario()) == 0
+                        && item.getContrasena().compareTo(u.getContrasena()) == 0) {
+                    return item.getCargo();
+                }
+            }
+        }
+
+        return null;
+    }
+    
+    
 
 }
