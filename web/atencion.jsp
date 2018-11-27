@@ -4,6 +4,7 @@
     Author     : FHGA
 --%>
 
+<%@page import="clinica.modelo.Atencion"%>
 <%@page import="clinica.modelo.ClinicaAdministrativa"%>
 <%@page import="clinica.modelo.Paciente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -49,9 +50,13 @@
         <div class="container">
 
             <%        if (request.getParameter("btnAceptar") != null) {
-                    if (request.getParameter("txtaFormulacion").compareTo("") != 0
-                            || request.getParameter("txtExamenes").compareTo("") != 0
-                            || request.getParameter("textaSintomas").compareTo("") != 0) {
+                clinica.modelo.Atencion a = new Atencion();
+                a.setFormulacion(request.getParameter("txtaFormulacion"));
+                a.setExamenes(request.getParameter("txtaExamenes"));
+                a.setSintomas(request.getParameter("txtaSintomas"));
+                    if (a.getFormulacion().compareTo("") != 0
+                            ||a.getExamenes().compareTo("") != 0
+                            ||a.getSintomas().compareTo("") != 0) {
             %><div class="row">
                 <div class="col-xs-12">
                     <div class="alert alert-success" role="alert">
@@ -59,6 +64,7 @@
                     </div>
                 </div>
             </div><%
+                caed.guardarAtencion(a, cedula);
             } else {
             %><div class="row">
                 <div class="col-xs-12">

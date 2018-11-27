@@ -14,6 +14,17 @@ public class Atencion {
     public String examenes;
     public String sintomas;
 
+    public Atencion(String formulacion, String examenes, String sintomas) {
+        this.formulacion = formulacion;
+        this.examenes = examenes;
+        this.sintomas = sintomas;
+    }
+
+    public Atencion() {
+    }
+
+    
+    
     public String getFormulacion() {
         return formulacion;
     }

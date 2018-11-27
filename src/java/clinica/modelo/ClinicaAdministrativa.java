@@ -156,7 +156,7 @@ public class ClinicaAdministrativa {
         guardarJson();
     }
     
-    public void guardarAtencion(Atencion a, String documento) throws IOException{
+    public void guardarAtencion(Atencion  a, String documento) throws IOException{
         leerJson();
         for(Paciente pa :clinica.pacientes){
             if(pa.getIdentificacion().compareTo(documento)==0){

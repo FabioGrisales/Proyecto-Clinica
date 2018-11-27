@@ -18,7 +18,7 @@ public class Paciente {
     String identificacion;
     String telefono;
  
-    ArrayList<Atencion>atenciones=new ArrayList<>();
+    ArrayList<Atencion>atenciones;
  
 
     public Paciente() {
@@ -26,7 +26,7 @@ public class Paciente {
         this.apellido = "";
         this.identificacion = "";
         this.telefono = "";
-      
+      this.atenciones=new ArrayList<>();
        
     }
     
