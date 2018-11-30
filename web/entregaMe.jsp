@@ -4,6 +4,9 @@
     Author     : FHGA
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="clinica.modelo.ClinicaAdministrativa"%>
+<%@page import="clinica.modelo.Paciente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,46 +19,115 @@
 
     </head>
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <form>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputNombew">Nombre</label>
-                            <input type="text" class="form-control" id="inputNombew" disabled value="">
+          <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
+            <a class="navbar-brand" href="menuEnfermero.jsp">Clinica Garagoa</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="historialClinico.jsp">Historial Clinico </a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="entregaMe.jsp">Entrega de medicamentos y examenes</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="index.jsp">Salir</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+          <div class="container">
+           <div class="container">
+            <h1>Administración de Pacientes</h1>
+         
+            <div class="row">
+                <div class="col-xs-12" >
+                    <form class="form-inline">
+                        <div class="form-group mb-3">
+                            <label for="Buscar" class="sr-only">Buscar</label>
+                            <input type="text" readonly class="form-control-plaintext" id="Buscar" >
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputApellido">Apellido</label>
-                            <input type="text" class="form-control" id="inputApellido" disabled value="">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="inputIdentificacion" class="sr-only">Password</label>
+                            <input type="tex" class="form-control" id="inputIdentificacion" placeholder="Identificacion"  name="txtBuscar">
                         </div>
+                        <button type="submit" class="btn btn-primary mb-2" name="btnBuscar">Buscar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <%
+                        String documento = "";
+
+                        if (request.getParameter("btnBuscar") != null) {
+                            documento = request.getParameter("txtBuscar");
+                        }
+
+                        clinica.modelo.ClinicaAdministrativa ca = new ClinicaAdministrativa();
+                        ArrayList<Paciente> pacientes = ca.obtenerPacientes(documento);
+
+                        if (pacientes != null && pacientes.size() > 0) {
+
+                    %>
+                    <table class="table" style="margin-top: 30px">
+                        <thead>
+                            <tr>
+
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Identificación</th>
+                                <th scope="col">Acción 1</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%for (Paciente p : pacientes) {
+                            %>
+                            <tr>
+                                <td><%= p.getNombre()%></td>
+                                <td><%= p.getApellido()%></td>
+                                <td><%= p.getIdentificacion()%></td>
+                                <td>
+                                    
+                                    <a href="atencion.jsp?cedula=<%= p.getIdentificacion() %>">Realizacion de Procesos</a>
+                                    
+                                </td>
+                                <td>
+                                    <form>
+                                        <input type="hidden" name="txtCedula" value="<%= p.getIdentificacion()%>" />
+                                        
+                                    </form> 
+                                </td>
+                            </tr>  
+                            <%
+                                }
+                            %>
+                        </tbody>
+                    </table>
+                    <%
+                    } else if (pacientes == null) {
+
+                    %>
+                    <div class="alert alert-warning" role="alert">
+                        Paciente No Encontrado
                     </div>
-                    <div class="form-group">
-                        <label for="inputIdentificacion">identificacion</label>
-                        <input type="text" class="form-control" id="inputIdentificacion" disabled  value="">
+                    <%} else {
+                    %>
+                    <div class="alert alert-warning" role="alert">
+                        No Hay Pacientes Registrados
                     </div>
-                    <div class="form-group">
-                        <label for="inputTelefono">Telefono</label>
-                        <input type="text" class="form-control" id="inputAddress2" disabled  value="">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="inputSintomas">Sintomas</label>
-                            <textarea name="txtaSintomas" rows="7" class="form-control" id="inputCity" cols="25"> </textarea>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputFormulacion">Formulacion</label>
-                            <textarea name="txtaFormulacion" rows="7" class="form-control" id="inputCity" cols="25"> </textarea>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputExamenes">Examenes</label>
-                            <textarea name="txtaExamenes" rows="7" class="form-control" id="inputCity" cols="25"> </textarea>
-                        </div>
-                    </div>
-                    <input type="hidden" name="cedula" value="" />
-                    <button name="btnAceptar" type="submit" class="btn btn-primary">Aceptar</button>
-                </form>
+                    <%
+                        }
+
+                    %>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </body>
+
+</body>
 </html>

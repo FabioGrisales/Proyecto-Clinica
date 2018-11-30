@@ -20,7 +20,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
-            <a class="navbar-brand" href="menuAdministrativo.jsp">Clinica Garagoa</a>
+            <a class="navbar-brand" href="#">Clinica Garagoa</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -29,6 +29,9 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="listaPacientes.jsp">Lista De Pacientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="entregaMe.jsp">Regresar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.jsp">Salir</a>
@@ -42,6 +45,17 @@
             String cedula = request.getParameter("cedula");
             clinica.modelo.ClinicaAdministrativa caed = new ClinicaAdministrativa();
             p = caed.obtenerPacientes(cedula).get(0);
+            
+             String sintomas = "";
+            String examenes = "";
+            String formulacion = "";
+
+            if (p.getAtenciones().size() > 0) {
+                Atencion a = p.getAtenciones().get(0);
+                sintomas = a.getSintomas();
+                examenes = a.getExamenes();
+                formulacion = a.getFormulacion();
+            }
 
             
         %>
@@ -69,7 +83,7 @@
             %><div class="row">
                 <div class="col-xs-12">
                     <div class="alert alert-success" role="alert">
-                    Imposible mandar al pasiente sin unos examenes o unos medicamentos para la mejora de su salud
+                        Imposible mandar al pasiente sin unos examenes o unos medicamentos para la mejora de su salud
                     </div>
                 </div>
             </div><%
@@ -103,18 +117,18 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="inputSintomas">Sintomas</label>
-                                <textarea name="txtaSintomas" rows="7" class="form-control" id="inputCity" cols="25"> </textarea>
+                                <textarea name="txtaSintomas" rows="7" class="form-control" id="inputCity" cols="25" disabled="false"> <%= sintomas %> </textarea>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputFormulacion">Formulacion</label>
-                                <textarea name="txtaFormulacion" rows="7" class="form-control" id="inputCity" cols="25"> </textarea>
+                                <textarea name="txtaFormulacion" rows="7" class="form-control" id="inputCity" cols="25" disabled="false">  <%= formulacion %></textarea>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputExamenes">Examenes</label>
-                                <textarea name="txtaExamenes" rows="7" class="form-control" id="inputCity" cols="25"> </textarea>
+                                <textarea name="txtaExamenes" rows="7" class="form-control" id="inputCity" cols="25" disabled="false">  <%= examenes %></textarea>
                             </div>
                         </div>
-                            <input type="hidden" name="cedula" value="<%= p.getIdentificacion()%>" />
+                        <input type="hidden" name="cedula" value="<%= p.getIdentificacion()%>" />
                         <button name="btnAceptar" type="submit" class="btn btn-primary">Aceptar</button>
                     </form>
                 </div>

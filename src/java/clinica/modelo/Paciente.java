@@ -29,6 +29,14 @@ public class Paciente {
       this.atenciones=new ArrayList<>();
        
     }
+
+    public ArrayList<Atencion> getAtenciones() {
+        return atenciones;
+    }
+
+    public void setAtenciones(ArrayList<Atencion> atenciones) {
+        this.atenciones = atenciones;
+    }
     
    
 

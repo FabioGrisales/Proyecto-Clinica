@@ -168,24 +168,24 @@ public class ClinicaAdministrativa {
         guardarJson();
     }
 
-//
-//  public ArrayList<Paciente> leerAtenciones(String documento) throws IOException {
-//        leerJson();
-//        if (documento.length() == 0) {
-//            return clinica.pacientes;
-//        } else {
-//            for (Paciente p : clinica.pacientes) {
-//                if (p.getIdentificacion().compareTo(documento) == 0) {
-//                    
-//                    ArrayList<Paciente> pacienteEncontrado = new ArrayList<>();
-//                    pacienteEncontrado.add(p);
-//
-//                    return pacienteEncontrado;
-//                }
-//            }
-//        }
-//        return null;
-//
-//    }
+
+  public ArrayList<Paciente> leerAtenciones(String documento) throws IOException {
+        leerJson();
+        if (documento.length() == 0) {
+            return clinica.pacientes;
+        } else {
+            for (Paciente p : clinica.pacientes) {
+                if (p.getIdentificacion().compareTo(documento) == 0) {
+                    
+                    ArrayList<Paciente> pacienteEncontrado = new ArrayList<>();
+                    pacienteEncontrado.add(p);
+
+                    return pacienteEncontrado;
+                }
+            }
+        }
+        return null;
+
+    }
 
 }

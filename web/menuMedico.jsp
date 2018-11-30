@@ -18,15 +18,12 @@
     <body>
         <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
-            <a class="navbar-brand" href="menuAdministrativo.jsp">Clinica Garagoa</a>
+            <a class="navbar-brand" href="menuMedico.jsp">Clinica Garagoa</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="atencion.jsp">Atencion de Pacientes</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="listaPacientes.jsp">Lista De Pacientes</a>
                     </li>
