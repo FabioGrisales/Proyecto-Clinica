@@ -109,8 +109,8 @@ public class ClinicaAdministrativa {
         return null;
 
     }
-    
-       public ArrayList<Paciente> obtenerPacientes(String documento) throws IOException {
+
+    public ArrayList<Paciente> obtenerPacientes(String documento) throws IOException {
         leerJson();
         if (documento.length() == 0) {
             return clinica.pacientes;
@@ -127,13 +127,14 @@ public class ClinicaAdministrativa {
         return null;
 
     }
-        public void eliminarPacientes(String documento) throws IOException {
+
+    public void eliminarPacientes(String documento) throws IOException {
         leerJson();
         for (Paciente p : clinica.pacientes) {
             if (p.getIdentificacion().compareTo(documento) == 0) {
-               clinica.pacientes.remove(p);
-               break;
-            } 
+                clinica.pacientes.remove(p);
+                break;
+            }
         }
         guardarJson();
     }
@@ -142,29 +143,49 @@ public class ClinicaAdministrativa {
         leerJson();
         for (Usuario u : clinica.usuarios) {
             if (u.getCedula().compareTo(documento) == 0) {
-               clinica.usuarios.remove(u);
-               break;
+                clinica.usuarios.remove(u);
+                break;
             }
         }
         guardarJson();
     }
-    
-    public void editarPacientes(Paciente p) throws IOException{
+
+    public void editarPacientes(Paciente p) throws IOException {
         leerJson();
         eliminarPacientes(p.getIdentificacion());
         aggPaciente(p);
         guardarJson();
     }
-    
-    public void guardarAtencion(Atencion  a, String documento) throws IOException{
+
+    public void guardarAtencion(Atencion a, String documento) throws IOException {
         leerJson();
-        for(Paciente pa :clinica.pacientes){
-            if(pa.getIdentificacion().compareTo(documento)==0){
+        for (Paciente pa : clinica.pacientes) {
+            if (pa.getIdentificacion().compareTo(documento) == 0) {
                 pa.atenciones.add(a);
             }
         }
-        
+
         guardarJson();
     }
+
+//
+//  public ArrayList<Paciente> leerAtenciones(String documento) throws IOException {
+//        leerJson();
+//        if (documento.length() == 0) {
+//            return clinica.pacientes;
+//        } else {
+//            for (Paciente p : clinica.pacientes) {
+//                if (p.getIdentificacion().compareTo(documento) == 0) {
+//                    
+//                    ArrayList<Paciente> pacienteEncontrado = new ArrayList<>();
+//                    pacienteEncontrado.add(p);
+//
+//                    return pacienteEncontrado;
+//                }
+//            }
+//        }
+//        return null;
+//
+//    }
 
 }

@@ -43,7 +43,7 @@
             clinica.modelo.ClinicaAdministrativa caed = new ClinicaAdministrativa();
             p = caed.obtenerPacientes(cedula).get(0);
 
-
+            
         %>
 
 

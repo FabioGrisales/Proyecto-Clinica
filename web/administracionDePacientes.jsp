@@ -20,7 +20,6 @@
 
     </head>
     <body>
-    <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
             <a class="navbar-brand" href="menuAdministrativo.jsp">Clinica Garagoa</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,9 +108,9 @@
                                 <td><%= p.getApellido()%></td>
                                 <td><%= p.getIdentificacion()%></td>
                                 <td>
-                                    
-                                    <a href="registroDePacientes.jsp?cedula=<%= p.getIdentificacion() %>">Editar</a>
-                                    
+
+                                    <a href="registroDePacientes.jsp?cedula=<%= p.getIdentificacion()%>">Editar</a>
+
                                 </td>
                                 <td>
                                     <form>
@@ -145,6 +144,4 @@
             </div>
         </div>
     </body>
-
-</body>
 </html>

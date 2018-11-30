@@ -54,7 +54,12 @@
                 } else if (cargo.compareTo("Enfermero") == 0) {
                     out.println("Sesion iniciada<br>");
                     session.setAttribute("txtUsuario", request.getParameter("txtUsuario").toString());//para iniciar secion creada
-                    response.sendRedirect("registroDePaciente.jsp");  //direcionar despues del boton aceptar a otra pagina como dejar la pagina en blaco
+                    response.sendRedirect("menuEnfermero.jsp");  //direcionar despues del boton aceptar a otra pagina como dejar la pagina en blaco
+
+                }else if (cargo.compareTo("Doctor") == 0) {
+                    out.println("Sesion iniciada<br>");
+                    session.setAttribute("txtUsuario", request.getParameter("txtUsuario").toString());//para iniciar secion creada
+                    response.sendRedirect("menuMedico.jsp");  //direcionar despues del boton aceptar a otra pagina como dejar la pagina en blaco
 
                 }
             }

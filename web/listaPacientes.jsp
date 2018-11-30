@@ -31,7 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Historial Clinico </a>
+                        <a class="nav-link" href="historialClinico.jsp">Historial Clinico </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="listaPacientes.jsp">Lista De Pacientes</a>
