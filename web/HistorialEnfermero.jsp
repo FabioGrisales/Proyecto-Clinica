@@ -1,14 +1,12 @@
 <%-- 
-Document   : ventanaDeHistorial
-Created on : 30/11/2018, 12:22:53 AM
-Author     : FHGA
+    Document   : HistorialEnfermero
+    Created on : 30/11/2018, 01:44:34 PM
+    Author     : FHGA
 --%>
 
-<%@page import="clinica.modelo.Usuario"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="clinica.modelo.Paciente"%>
-<%@page import="clinica.modelo.ClinicaAdministrativa"%>
 <%@page import="clinica.modelo.Atencion"%>
+<%@page import="clinica.modelo.ClinicaAdministrativa"%>
+<%@page import="clinica.modelo.Paciente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,8 +18,7 @@ Author     : FHGA
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     </head>
-
-    <body>
+   <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
             <a class="navbar-brand" href="menuMedico.jsp">Clinica Garagoa</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,9 +26,8 @@ Author     : FHGA
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-
                     <li class="nav-item">
-                        <a class="nav-link" href="listaPacientes.jsp">Lista De Pacientes</a>
+                        <a class="nav-link" href="realizarPro.jsp">Regresar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.jsp">Salir</a>

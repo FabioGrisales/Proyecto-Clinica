@@ -31,13 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="historialClinico.jsp">Historial Clinico </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="listaPacientes.jsp">Lista De Pacientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="entregaMe.jsp">Regresar</a>
+                        <a class="nav-link" href="listaPacientes.jsp">Regresar</a>
                     </li>
                     <li>
                         <a class="nav-link" href="index.jsp">Salir</a>
@@ -112,7 +106,7 @@
                                     <td><%= p.getIdentificacion()%></td>
                                     <td>
 
-                                        <a href="atencion.jsp?cedula=<%= p.getIdentificacion()%>">Historial</a>
+                                        <a href="ventanaDeHistorial.jsp?cedula=<%= p.getIdentificacion()%>">Historial</a>
 
                                     </td>
                                     <td>

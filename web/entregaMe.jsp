@@ -26,11 +26,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="historialClinico.jsp">Historial Clinico </a>
-                    </li>
+                   
                      <li class="nav-item">
                         <a class="nav-link" href="entregaMe.jsp">Entrega de medicamentos y examenes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menuEnfermero.jsp">Regresar</a>
                     </li>
                     <li>
                         <a class="nav-link" href="index.jsp">Salir</a>
@@ -93,7 +94,7 @@
                                 <td><%= p.getIdentificacion()%></td>
                                 <td>
                                     
-                                    <a href="atencion.jsp?cedula=<%= p.getIdentificacion() %>">Realizacion de Procesos</a>
+                                    <a href="ventanaDeHistorial.jsp?cedula=<%= p.getIdentificacion() %>">Realizacion de Procesos</a>
                                     
                                 </td>
                                 <td>

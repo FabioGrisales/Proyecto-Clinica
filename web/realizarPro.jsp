@@ -4,6 +4,9 @@
     Author     : FHGA
 --%>
 
+<%@page import="clinica.modelo.ClinicaAdministrativa"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="clinica.modelo.Paciente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,6 +19,125 @@
 
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
+            <a class="navbar-brand" href="menuMedico.jsp">Clinica Garagoa</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="menuEnfermero.jsp">Regresar</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="index.jsp">Salir</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="container">
+                <h1>Administración de Pacientes</h1>
+                <%
+                    String eliminarDoc = "";
+                    if (request.getParameter("btnEliminar") != null) {
+                        eliminarDoc = request.getParameter("txtCedula");
+                        clinica.modelo.ClinicaAdministrativa cad = new ClinicaAdministrativa();
+                        cad.eliminarPacientes(eliminarDoc);
+
+                %>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="alert alert-success" role="alert">
+                            Se ha Eliminado El Usuario Con Documento: <%= eliminarDoc%>  
+                        </div>
+                    </div>
+                </div>
+                <%}
+                %>
+                <div class="row">
+                    <div class="col-xs-12" >
+                        <form class="form-inline">
+                            <div class="form-group mb-3">
+                                <label for="Buscar" class="sr-only">Buscar</label>
+                                <input type="text" readonly class="form-control-plaintext" id="Buscar" >
+                            </div>
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="inputIdentificacion" class="sr-only">Identificacion</label>
+                                <input type="tex" class="form-control" id="inputIdentificacion" placeholder="Identificacion"  name="txtBuscar">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2" name="btnBuscar">Buscar</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <%
+                            String documento = "";
+                           clinica.modelo.ClinicaAdministrativa ca = new ClinicaAdministrativa();
+                            ArrayList<Paciente> pacientes = ca.obtenerPacientes(documento);
+
+                            if (pacientes != null && pacientes.size() > 0) {
+
+                        %>
+                        <table class="table" style="margin-top: 30px">
+                            <thead>
+                                <tr>
+
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Identificación</th>
+                                    <th scope="col">Editar</th>
+                                    <th scope="col">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%for (Paciente p : pacientes ) {
+                                    
+                                %>
+                                <tr>
+                                    <td><%= p.getNombre()%></td>
+                                    <td><%= p.getApellido()%></td>
+                                    <td><%= p.getIdentificacion()%></td>
+                                    <td>
+
+                                        <a href="HistorialEnfermero.jsp?cedula=<%= p.getIdentificacion()%>">Historial</a>
+
+                                    </td>
+                                    <td>
+                                        <form>
+                                            <input type="hidden" name="txtCedula" value="<%= p.getIdentificacion()%>" />
+                                            <button type="submit" class="btn btn-danger btn-sm" name="btnEliminar">Eliminar</button>
+                                        </form> 
+                                    </td>
+                                </tr>  
+                                <%
+                                    }
+                                %>
+                            </tbody>
+                        </table>
+                        <%
+                        } else if (pacientes == null) {
+
+                        %>
+                        <div class="alert alert-warning" role="alert">
+                            Paciente No Encontrado
+                        </div>
+                        <%} else {
+                        %>
+                        <div class="alert alert-warning" role="alert">
+                            No Hay Pacientes Registrados
+                        </div>
+                        <%
+                            }
+
+                        %>
+                    </div>
+                </div>
+            </div>
     </body>
+
+</body>
 </html>

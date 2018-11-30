@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="realizarPro.jsp">Realizar Procedimientos</a>
+                        <a class="nav-link" href="realizarPro.jsp">Historial</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="entregaMe.jsp">Entregar Medicamentos</a>

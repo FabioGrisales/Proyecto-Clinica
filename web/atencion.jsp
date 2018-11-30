@@ -31,9 +31,6 @@
                         <a class="nav-link" href="listaPacientes.jsp">Lista De Pacientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="entregaMe.jsp">Regresar</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="index.jsp">Salir</a>
                     </li>
                 </ul>
@@ -117,15 +114,15 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="inputSintomas">Sintomas</label>
-                                <textarea name="txtaSintomas" rows="7" class="form-control" id="inputCity" cols="25" disabled="false"> <%= sintomas %> </textarea>
+                                <textarea name="txtaSintomas" rows="7" class="form-control" id="inputCity" cols="25" ></textarea>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputFormulacion">Formulacion</label>
-                                <textarea name="txtaFormulacion" rows="7" class="form-control" id="inputCity" cols="25" disabled="false">  <%= formulacion %></textarea>
+                                <textarea name="txtaFormulacion" rows="7" class="form-control" id="inputCity" cols="25" ></textarea>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputExamenes">Examenes</label>
-                                <textarea name="txtaExamenes" rows="7" class="form-control" id="inputCity" cols="25" disabled="false">  <%= examenes %></textarea>
+                                <textarea name="txtaExamenes" rows="7" class="form-control" id="inputCity" cols="25" > </textarea>
                             </div>
                         </div>
                         <input type="hidden" name="cedula" value="<%= p.getIdentificacion()%>" />
